@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+</head>
+<body>
+    <main class="login-container" aria-labelledby="login-title">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+            :root{--accent:#F9C349;--muted: #6b7280}
+            *{box-sizing:border-box;font-family: 'Quicksand', sans-serif;}
+            body{margin:0;background-repeat: no-repeat;background-size: cover;background-image: url(day-care-hero-blobs-background.svg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+            .card{background:var(--card);padding:2rem;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.08);width:100%;max-width:420px}
+            h1{margin:0 0 0.5rem;font-size:1.25rem}
+            p.lead{margin:0 0 1.25rem;color:var(--muted);font-size:0.95rem}
+            .field{margin-bottom:0.75rem}
+            label{display:block;font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem}
+            input[type="text"],input[type="password"]{width:100%;padding:0.65rem 0.75rem;border:1px solid #F9C349;border-radius:8px;font-size:0.95rem;background-color:transparent;outline:none;}
+            .row{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem}
+            .checkbox{display:flex;align-items:center;gap:0.5rem}
+            button[type="submit"]{background:var(--accent);color:#fff;border:0;padding:0.7rem 0.9rem;border-radius:8px;font-weight:600;cursor:pointer}
+            .toggle-btn{background:transparent;border:0;color:var(--muted);cursor:pointer;padding:0.25rem;font-size:0.9rem}
+            .msg{font-size:0.9rem;margin-top:0.5rem}
+            .error{color:#b91c1c}
+            .success{color:#166534}
+            .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+        </style>
+
+        <section class="card" aria-describedby="login-desc">
+            <h1 id="login-title">Connexion</h1>
+            <p id="login-desc" class="lead">Connectez-vous à votre compte</p>
+
+            <form id="loginForm" novalidate>
+                <div class="field">
+                    <label for="email">Nom d'utilisateur</label>
+                    <input id="email" name="email" type="text" inputmode="text" autocomplete="username" required placeholder="Votre nom d'utilisateur" />
+                </div>
+
+                <div class="field">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem">
+                        <label for="password">Mot de passe</label>
+                        <button type="button" class="toggle-btn" id="togglePwd" aria-pressed="false">Afficher</button>
+                    </div>
+                    <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••" />
+                </div>
+
+                <div class="row">
+                    <label class="checkbox">
+                        <input id="remember" type="checkbox" />
+                        <span>Se souvenir de moi</span>
+                    </label>
+                    <a href="#" style="color:var(--accent);text-decoration:none;font-size:0.9rem">Mot de passe oublié?</a>
+                </div>
+
+                <div style="display:flex;gap:0.5rem;align-items:center">
+                    <button type="submit">Se connecter</button>
+                    <div id="status" class="msg" role="status" aria-live="polite"></div>
+                </div>
+            </form>
+        </section>
+
+        <script>
+            (function(){
+                const form = document.getElementById('loginForm');
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                const remember = document.getElementById('remember');
+                const status = document.getElementById('status');
+                const toggle = document.getElementById('togglePwd');
+
+                // Prefill from localStorage if remembered
+                try {
+                    const saved = localStorage.getItem('lp_saved_email');
+                    if (saved) { email.value = saved; remember.checked = true; }
+                } catch(e){ /* ignore storage errors */ }
+
+                toggle.addEventListener('click', () => {
+                    const showing = password.type === 'text';
+                    password.type = showing ? 'password' : 'text';
+                    toggle.textContent = showing ? 'Afficher' : 'Cacher';
+                    toggle.setAttribute('aria-pressed', String(!showing));
+                });
+
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    status.textContent = '';
+                    status.className = 'msg';
+
+                    // Simple client-side validation
+                    if (!email.value.trim()) {
+                        status.textContent = 'Veuillez saisir votre adresse e-mail.';
+                        status.classList.add('error');
+                        email.focus();
+                        return;
+                    }
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                        status.textContent = 'Adresse e-mail invalide.';
+                        status.classList.add('error');
+                        email.focus();
+                        return;
+                    }
+                    if (password.value.length < 6) {
+                        status.textContent = 'Le mot de passe doit contenir au moins 6 caractères.';
+                        status.classList.add('error');
+                        password.focus();
+                        return;
+                    }
+
+                    // Remember email if requested
+                    try {
+                        if (remember.checked) localStorage.setItem('lp_saved_email', email.value);
+                        else localStorage.removeItem('lp_saved_email');
+                    } catch(e){ /* ignore storage errors */ }
+
+                    // Placeholder for server submission: replace with real network request
+                    status.textContent = 'Connexion en cours…';
+                    status.classList.remove('error');
+                    setTimeout(() => {
+                        status.textContent = 'Connecté avec succès (simulation).';
+                        status.classList.remove('error');
+                        status.classList.add('success');
+                        form.reset();
+                    }, 800);
+                });
+            })();
+        </script>
+    </main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="Register.css">
+</head>
+<body>
+    <form id="registerForm" action="#" method="post" novalidate>
+        <fieldset>
+            <legend>S'inscrire</legend>
+
+            <div>
+                <label for="firstName">Nom</label>
+                <input id="firstName" name="firstName" type="text" required autocomplete="given-name">
+            </div>
+
+            <div>
+                <label for="lastName">Prénom</label>
+                <input id="lastName" name="lastName" type="text" required autocomplete="family-name">
+            </div>
+
+            <div>
+                <label for="age">Âge</label>
+                <input id="age" name="age" type="number" min="14" max="20" required>
+            </div>
+
+            <div>
+                <label for="level">Filière</label>
+                <select id="level" name="level" required>
+                    <option value="">MPSI</option>
+                    <option value="primary">PCSI</option>
+                    <option value="secondary">MP</option>
+                    <option value="highschool">PSI</option>
+                    <option value="undergraduate">PC</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="studentId">Matricule</label>
+                <input id="studentId" name="id" type="text" pattern="[22-INP-9\-]" required>
+            </div>
+
+            <div>
+                <label for="username">Nom d'utilisateur</label>
+                <input id="username" name="username" type="text" minlength="3" maxlength="30" required autocomplete="username">
+            </div>
+
+            <div>
+                <label for="password">Mot de passe</label>
+                <input id="password" name="password" type="password" minlength="8" required autocomplete="new-password">
+                <small>Minimum 8 caractères</small>
+            </div>
+
+            <div>
+                <button type="submit">S'inscrire</button>
+                <button type="reset">Réinitialiser</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #eef6f7;
+}
+
+header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+header .options {
+    display: flex;
+    gap: 15px;
+}
+header .options .connexion a,
+header .options .inscription a {
+    text-decoration: none;
+    color: #F9C349;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+header .options .connexion a::after,
+header .options .inscription a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    background: #F9C349;
+    transition: width .3s ease-in;
+}
+
+header .options .connexion a:hover::after,
+header .options .inscription a:hover::after {   
+    width: 70px;
+}
+
+#conteneur {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px 0;
+    background-image: url(day-care-hero-blobs-background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+.matière {
+    width: 200px;
+    height: 200px;
+    background-color: #F9C349;
+    border-radius: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 30px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.matière:hover {
+    transform: scale(1.05);
+}
+.matière a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+}
+.matière h2{
+    font-size: 90%;
+}
+
+div a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+div a:hover {
+    color: #fff;
+}
+
+footer {
+    background-color: #eef6f7;
+    color: #333;
+    padding: 40px 0;
+}
+
+footer #contains {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+footer #contains .column {
+    width: 220px;
+    text-align: center;
+}
+
+footer #contains .column h2 {
+    color: #F9C349;
+    margin-bottom: 15px;
+}
+
+footer #contains .column .links a {
+    color: #F9C349;
+    margin: 5px 0;
+    transition: color 0.3s ease;
+}
+
+footer #contains .column #logo img{
+    size: 150px; height: 150px; 
+}
+
+footer #contains .column .link img{
+    size: 70px; height: 70px; 
+}
+
+#copyright p{
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+    font-size: 13px;
+}
+
+
+.back {
+    border: 2px solid #F9C349;
+    border-radius: 10px;
+    width: 110px;
+    text-align: center;
+    margin: 15px;
+}
+
+.back a {
+    color: #F9C349;
+    font-size: 18px;
+    display: block;
+    padding: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back a:hover {
+    background-color: #F9C349;
+    color: white;
+}
+
+
+.email{
+    margin-bottom: -7px;
+}
+
+@media (max-width: 768px) {
+    .matière {
+        width: 150px;
+        height: 150px;
+        margin: 20px;
+    }
+    footer #contains {
+        flex-direction: column;
+        align-items: center;
+    }
+    #copyrigth {
+        padding-left: 0;
+    }
+}

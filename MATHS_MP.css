@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #eef6f7;
+}
+
+header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+header .options {
+    display: flex;
+    gap: 15px;
+}
+header .options .connexion a,
+header .options .inscription a {
+    text-decoration: none;
+    color: #F9C349;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+header .options .connexion a::after,
+header .options .inscription a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    position: absolute;
+    background: #F9C349;
+    transition: width .3s ease-in;
+}
+
+header .options .connexion a:hover::after,
+header .options .inscription a:hover::after {   
+    width: 70px;
+}
+
+#conteneur{
+    display: flex;
+    background-image: url(day-care-hero-blobs-background.svg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: top;
+    flex-wrap: wrap;
+    align-content: center;
+    margin: 10px;
+}
+.doc1{
+    display: flex;
+    flex-direction:column;
+    margin: 05px;
+    background-color: white;
+    padding: 20px;
+    font-family: 'Quicksand', sans-serif;
+    align-items: center;
+}
+
+.doc1 img{
+    width: 200px;
+    height: 300px;
+}
+
+button{
+    width: 200px;
+    border-radius: 40px;
+    margin-top: 5px;
+    background-color: white;
+}
+button:hover{
+    transition-duration:0.2s;
+    border-color: aquamarine;
+    color:aquamarine ;
+}
+div a{
+    text-decoration: none;
+    color: black;
+}
+.doc1 a:hover{
+    transition-duration:0.2s;
+    color: aquamarine;
+}
+.titre{
+    display: flex;
+    margin: 25%;
+    padding-left: 8%;
+}
+  
+footer {
+    background-color: #eef6f7;
+    color: #333;
+    padding: 40px 0;
+}
+
+footer #contains {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+footer #contains .column {
+    width: 220px;
+    text-align: center;
+}
+
+footer #contains .column h2 {
+    color: #F9C349;
+    margin-bottom: 15px;
+}
+
+footer #contains .column .links a {
+    color: #F9C349;
+    margin: 5px 0;
+    transition: color 0.3s ease;
+}
+
+footer #contains .column #logo img{
+    size: 150px; height: 150px; 
+}
+
+footer #contains .column .link img{
+    size: 70px; height: 70px; 
+}
+
+#copyright p{
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+    font-size: 13px;
+}
+
+.back {
+    border: 2px solid #F9C349;
+    border-radius: 10px;
+    width: 110px;
+    text-align: center;
+    margin: 15px;
+}
+
+.back a {
+    color: #F9C349;
+    font-size: 18px;
+    display: block;
+    padding: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back a:hover {
+    background-color: #F9C349;
+    color: white;
+}
+ 
